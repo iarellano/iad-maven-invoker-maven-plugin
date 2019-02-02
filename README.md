@@ -48,6 +48,19 @@ to invoke a Maven execution on an independent maven project.
 
 Check the example at [example/invoker-project](example/invoker-project) which builds project [example/target-project](example/target-project).
 
+1. Clone the repo
+    ```bash
+    git clone git@github.com:iarellano/iad-maven-invoker-maven-plugin.git
+    ```
+2. From within the cloned directory, change to example project directory
+    ```bash
+    cd example/invoker-project
+    ```
+3. Execute the maven goal
+    ```bash
+    mvn com.github.iarellano:iad-maven-invoker-maven-plugin:1.0:execute
+    ```
+
 ## Example
 
 ```xml
@@ -76,9 +89,14 @@ Check the example at [example/invoker-project](example/invoker-project) which bu
 </plugin>
 ```
 ## Unit Testing
-```bash
-mvn clean test
-```
+1. Clone the repo
+    ```bash
+    git clone git@github.com:iarellano/iad-maven-invoker-maven-plugin.git
+    ```
+2. From within the cloned directory, change to example project directory
+    ```bash
+    mvn clean test
+    ```
 
 ## Parameters
 - [localRepository](#localRepository) 
@@ -115,13 +133,13 @@ mvn clean test
 
 
 ### localRepository
-The path to the base directory of the local repository to use for the Maven invocation. Defaults to ```${settings.localRepository}```.
+The path to the base directory of the local repository to use for the Maven invocation. Defaults to `${settings.localRepository}`.
 
 |          |     |
 | -------- | --- |
-| Type     | File path                         |
-| Default  | ```${settings.localRepository}``` |
-| Required | Yes                               |
+| Type     | File path                   |
+| Default  | ${settings.localRepository} |
+| Required | Yes                         |
 
 [Go to parameters list](#Parameters)
 
@@ -147,7 +165,7 @@ The working directory for the Maven invocation.
 [Go to parameters list](#Parameters)
 
 ### pomFile
-The name of the POM file for the Maven invocation which is contained in {@link #baseDirectory}.
+The name of the POM file for the Maven invocation which is contained in [baseDirectory](#baseDirectory).
 
 |          |     |
 | -------- | --- |
@@ -168,7 +186,7 @@ The goals for the Maven invocation.
 [Go to parameters list](#Parameters)
 
 ### profiles
-The profiles for the Maven invocation. Equivalent of {@code -P} and {@code --active-profiles}.
+The profiles for the Maven invocation. Equivalent of `-P` and `--active-profiles`.
 
 |          |     |
 | -------- | --- |
@@ -178,7 +196,7 @@ The profiles for the Maven invocation. Equivalent of {@code -P} and {@code --act
 [Go to parameters list](#Parameters)
 
 ### mavenOpts
-The value of the <code>MAVEN_OPTS</code> environment variable. Uses the default options if not provided.
+The value of the `MAVEN_OPTS` environment variable. Uses the default options if not provided.
 
 |          |     |
 | -------- | --- |
@@ -189,7 +207,7 @@ The value of the <code>MAVEN_OPTS</code> environment variable. Uses the default 
 [Go to parameters list](#Parameters)
 
 ### recursive
-Recursion behavior of a reactor invocation. <em>Inverse</em> equivalent of {@code -N} and {@code --non-recursive}. Defaults to <code>true</code>.
+Recursion behavior of a reactor invocation. <em>Inverse</em> equivalent of `-N` and `--non-recursive`. Defaults to <code>true</code>.
 
 |          |     |
 | -------- | --- |
@@ -200,7 +218,7 @@ Recursion behavior of a reactor invocation. <em>Inverse</em> equivalent of {@cod
 [Go to parameters list](#Parameters)
 
 ### alsoMake
-Enable the 'also make' mode. Equivalent of {@code -am} or {@code --also-make}. Defaults to <code>false</code>.
+Enable the 'also make' mode. Equivalent of `-am` or `--also-make`. Defaults to <code>false</code>.
 
 |          |     |
 | -------- | --- |
@@ -212,7 +230,7 @@ Enable the 'also make' mode. Equivalent of {@code -am} or {@code --also-make}. D
 [Go to parameters list](#Parameters)
 
 ### alsoMakeDependents
-Enable the 'also make dependents' mode. Equivalent of {@code -amd} or {@code --also-make-dependents}.
+Enable the 'also make dependents' mode. Equivalent of `-amd` or `--also-make-dependents`.
 
 |          |     |
 | -------- | --- |
@@ -224,7 +242,7 @@ Enable the 'also make dependents' mode. Equivalent of {@code -amd} or {@code --a
 [Go to parameters list](#Parameters)
 
 ### debug
-Enable the debug mode of the Maven invocation. Equivalent of {@code -X} and {@code --debug}. Defaults to <code>false</code>.
+Enable the debug mode of the Maven invocation. Equivalent of `-X` and `--debug`. Defaults to <code>false</code>.
 
 |          |     |
 | -------- | --- |
@@ -235,7 +253,7 @@ Enable the debug mode of the Maven invocation. Equivalent of {@code -X} and {@co
 [Go to parameters list](#Parameters)
 
 ### resumeFrom
-Resume reactor from specified project. Equivalent of {@code -rf} or {@code --resume-from}.
+Resume reactor from specified project. Equivalent of `-rf` or `--resume-from`.
 
 |          |     |
 | -------- | --- |
@@ -246,8 +264,8 @@ Resume reactor from specified project. Equivalent of {@code -rf} or {@code --res
 [Go to parameters list](#Parameters)
 
 ### globalSettingsFile
-The path to the global settings for the Maven invocation. Equivalent of {@code -gs} and
-{@code --global-settings}. If not provided then it uses global settings from the default location.
+The path to the global settings for the Maven invocation. Equivalent of `-gs` and
+`--global-settings`. If not provided then it uses global settings from the default location.
 
 |          |     |
 | -------- | --- |
@@ -338,7 +356,7 @@ directory of the project using this plugin, absolute path may be set.
 [Go to parameters list](#Parameters)
 
 ### projects
-Sets the reactor project list. Equivalent of {@code -pl} or {@code --projects}, ignored if {@code #recusive} is <code>false</code>.
+Sets the reactor project list. Equivalent of `-pl` or `--projects`, ignored if [recusive](#recusive) is <code>false</code>.
 
 |          |     |
 | -------- | --- |
@@ -348,7 +366,8 @@ Sets the reactor project list. Equivalent of {@code -pl} or {@code --projects}, 
 [Go to parameters list](#Parameters)
 
 ### threads
-Thread count, for instance 2.0C where C is core multiplied Equivalent of {@code -T} or {@code --threads}.
+Thread count, for instance <em>2.0C<em> where <em<C<em> is core multiplied Equivalent of `-T` or `--threads`.
+
 |          |     |
 | -------- | --- |
 | Type     | String |
@@ -358,7 +377,7 @@ Thread count, for instance 2.0C where C is core multiplied Equivalent of {@code 
 [Go to parameters list](#Parameters)
 
 ### offline
-The network mode of the Maven invocation. Equivalent of {@code -o} and {@code --offline},  <code>true</code> if
+The network mode of the Maven invocation. Equivalent of `-o` and `--offline`,  <code>true</code> if
 Maven should be executed in offline mode, <code>false</code> if the online. Default is <code>false</code>.
 
 |          |     |
@@ -370,7 +389,7 @@ Maven should be executed in offline mode, <code>false</code> if the online. Defa
 [Go to parameters list](#Parameters)
 
 ### showErrors
-Sets the exception output mode of the Maven invocation. Equivalent of {@code -e} and {@code --errors}.
+Sets the exception output mode of the Maven invocation. Equivalent of `-e` and `--errors`.
 <code>true</code> if Maven should print stack traces, <code>false</code> otherwise. Default is <code>false</code>.
 
 |          |     |
@@ -382,8 +401,8 @@ Sets the exception output mode of the Maven invocation. Equivalent of {@code -e}
 [Go to parameters list](#Parameters)
 
 ### updateSnapshots
-Specifies whether Maven should enforce an update check for plugins and snapshots. Equivalent of {@code -U} and
-{@code --update-snapshots}. <code>true</code> if plugins and snapshots should be updated, <code>false</code>
+Specifies whether Maven should enforce an update check for plugins and snapshots. Equivalent of `-U` and
+`--update-snapshots`. <code>true</code> if plugins and snapshots should be updated, <code>false</code>
 otherwise. Default is <code>false</code>.
 
 |          |     |
@@ -395,7 +414,7 @@ otherwise. Default is <code>false</code>.
 [Go to parameters list](#Parameters)
 
 ### toolchainsFile
-The alternate path for the user toolchains file Equivalent of {@code -t} or {@code --toolchains}.
+The alternate path for the user toolchains file Equivalent of `-t` or `--toolchains`.
 
 |          |     |
 | -------- | --- |
@@ -406,7 +425,7 @@ The alternate path for the user toolchains file Equivalent of {@code -t} or {@co
 [Go to parameters list](#Parameters)
 
 ### globalToolchainsFile
-The alternate path for the global toolchains file Equivalent of {@code -gt} or {@code --global-toolchains}
+The alternate path for the global toolchains file Equivalent of `-gt` or `--global-toolchains`
 
 |          |     |
 | -------- | --- |
@@ -419,7 +438,7 @@ The alternate path for the global toolchains file Equivalent of {@code -gt} or {
 ### nonPluginUpdates
 Specifies whether Maven should check for plugin updates.
 <p>
-    Equivalent of {@code -npu} or {@code --no-plugin-updates}
+    Equivalent of `-npu` or `--no-plugin-updates`
 </p>
 <p>
     <strong>note: </strong>Ineffective with Maven3, only kept for backward compatibility
@@ -434,9 +453,9 @@ Specifies whether Maven should check for plugin updates.
 [Go to parameters list](#Parameters)
 
 ### globalChecksumPolicy
-Checksum mode of the Maven invocation. Equivalent of {@code -c} or {@code --lax-checksums}, {@code -C}
-or {@code --strict-checksums}. The checksum mode, must be one of {@link org.apache.maven.shared.invoker.InvocationRequest.CheckSumPolicy#Warn} and
-{@link org.apache.maven.shared.invoker.InvocationRequest.CheckSumPolicy#Fail}.
+Checksum mode of the Maven invocation. Equivalent of `-c` or `--lax-checksums`, `-C`
+or `--strict-checksums`. The checksum mode, must be one of [Warn](https://maven.apache.org/shared/maven-invoker/apidocs/org/apache/maven/shared/invoker/InvocationRequest.CheckSumPolicy.html#Warn) and
+[Fail](https://maven.apache.org/shared/maven-invoker/apidocs/org/apache/maven/shared/invoker/InvocationRequest.CheckSumPolicy.html#Fail).
 
 |          |     |
 | -------- | --- |
@@ -448,11 +467,12 @@ or {@code --strict-checksums}. The checksum mode, must be one of {@link org.apac
 [Go to parameters list](#Parameters)
 
 ### reactorFailureBehavior
-Sets the failure mode of the Maven invocation. Equivalent of {@code -ff} and {@code --fail-fast}, {@code -fae}
-and {@code --fail-at-end}, {@code -fn} and {@code --fail-never}
+Sets the failure mode of the Maven invocation. Equivalent of `-ff` and `--fail-fast`, `-fae`
+and `--fail-at-end`, `-fn` and `--fail-never`.
 
-The failure mode, must be one of {@link org.apache.maven.shared.invoker.InvocationRequest.ReactorFailureBehavior#FailFast},
-{@link org.apache.maven.shared.invoker.InvocationRequest.ReactorFailureBehavior#FailAtEnd} and {@link org.apache.maven.shared.invoker.InvocationRequest.ReactorFailureBehavior#FailNever}.
+The failure mode, must be one of [FailFast](https://maven.apache.org/shared/maven-invoker/apidocs/org/apache/maven/shared/invoker/InvocationRequest.ReactorFailureBehavior.html#FailFast),
+[FailAtEnd](https://maven.apache.org/shared/maven-invoker/apidocs/org/apache/maven/shared/invoker/InvocationRequest.ReactorFailureBehavior.html#FailAtEnd)
+and [FailNever](https://maven.apache.org/shared/maven-invoker/apidocs/org/apache/maven/shared/invoker/InvocationRequest.ReactorFailureBehavior.html#FailNever)
 
 |          |     |
 | -------- | --- |
@@ -465,7 +485,7 @@ The failure mode, must be one of {@link org.apache.maven.shared.invoker.Invocati
 [Go to parameters list](#Parameters)
 
 ### timeoutInSeconds
-The timeout in seconds to execute the project. A value of <code>0</code> means no timeout.
+The timeout in seconds to execute the project. A value of <string>`0`</strong> means no timeout.
 
 |          |     |
 | -------- | --- |
