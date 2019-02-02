@@ -17,7 +17,7 @@ import java.util.*;
 /**
  * Goal which touches a timestamp file.
  */
-@Mojo(name = "touch", defaultPhase = LifecyclePhase.PROCESS_SOURCES)
+@Mojo(name = "execute", defaultPhase = LifecyclePhase.PROCESS_SOURCES)
 public class MavenInvokerMojo extends AbstractMojo {
 
     /**
@@ -134,7 +134,7 @@ public class MavenInvokerMojo extends AbstractMojo {
      * Additional properties to pass to the Maven invocation.
      */
     @Parameter
-    private Properties properties = new Properties();
+    private Map<String, String> properties = new HashMap<>();
 
     /**
      * Additional environment variables to pass to the Maven invocation.
@@ -245,6 +245,8 @@ public class MavenInvokerMojo extends AbstractMojo {
     @Parameter(defaultValue = "0")
     private int timeoutInSeconds = 0;
 
+    private int exitCode;
+
     private Properties mergeProperties() throws MojoExecutionException {
         Properties mergedProperties = new Properties();
         if (propertiesFile != null) {
@@ -303,12 +305,19 @@ public class MavenInvokerMojo extends AbstractMojo {
         invoker.setWorkingDirectory(workingDirectory);
         try {
             InvocationResult result = invoker.execute(request);
+            this.exitCode = result.getExitCode();
             if (result.getExitCode() != 0) {
                 throw new MojoExecutionException("Could not invoke external project " + pom.getAbsolutePath(), result.getExecutionException());
             }
+
         } catch (MavenInvocationException e) {
+            this.exitCode = 0;
             e.printStackTrace();
         }
         getLog().info("------------------------------------- Build completed -------------------------------------");
+    }
+
+    public int getExitCode() {
+        return exitCode;
     }
 }

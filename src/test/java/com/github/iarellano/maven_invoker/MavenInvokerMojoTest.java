@@ -37,7 +37,7 @@ public class MavenInvokerMojoTest
         assertNotNull( pom );
         assertTrue( pom.exists() );
 
-        MavenInvokerMojo mavenInvokerMojo = (MavenInvokerMojo) rule.lookupConfiguredMojo( pom, "touch" );
+        MavenInvokerMojo mavenInvokerMojo = (MavenInvokerMojo) rule.lookupConfiguredMojo( pom, "execute" );
         assertNotNull(mavenInvokerMojo);
         String mavenHome = System.getenv("MAVEN_HOME");
         rule.setVariableValueToObject(mavenInvokerMojo, "globalSettingsFile", new File(mavenHome + "/conf/settings.xml"));
@@ -46,6 +46,8 @@ public class MavenInvokerMojoTest
         rule.setVariableValueToObject(mavenInvokerMojo, "javaHome", new File(System.getProperty("java.home")));
         rule.setVariableValueToObject(mavenInvokerMojo, "localRepository", null);
         mavenInvokerMojo.execute();
+        int exitCode = (int) rule.getVariableValueFromObject(mavenInvokerMojo, "exitCode");
+        assertEquals(0, exitCode);
     }
 }
 
