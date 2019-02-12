@@ -318,7 +318,7 @@ Additional properties to pass to the Maven invocation.
 
 |          |     |
 | -------- | --- |
-| Type     | [Map](https://maven.apache.org/guides/mini/guide-configuring-plugins.html#Mapping_Maps) |
+| Type     | [Map](https://maven.apache.org/guides/mini/guide-configuring-plugins.html#Mapping_Properties) |
 | Required | No            |
 
 [Go to parameters list](#Parameters)

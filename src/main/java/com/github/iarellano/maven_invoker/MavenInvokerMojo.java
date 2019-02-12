@@ -134,7 +134,7 @@ public class MavenInvokerMojo extends AbstractMojo {
      * Additional properties to pass to the Maven invocation.
      */
     @Parameter
-    private Map<String, String> properties = new HashMap<>();
+    private Properties properties = new Properties();
 
     /**
      * Additional environment variables to pass to the Maven invocation.
