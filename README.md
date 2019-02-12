@@ -67,7 +67,7 @@ Check the example at [example/invoker-project](example/invoker-project) which bu
 <plugin>
     <groupId>com.github.iarellano</groupId>
     <artifactId>iad-maven-invoker-maven-plugin</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
     <executions>
         <id>build-project</id>
         <phase>process-resources</phase>
